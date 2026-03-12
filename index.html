@@ -96,8 +96,8 @@
   .nav-overlay.open { display: block; }
 
   /* Desktop nav links */
-  .nav-links-desktop { display: none; gap: 2.5rem; list-style: none; }
-  .nav-links-desktop a { font-family: 'Cinzel', serif; font-size: 0.75rem; letter-spacing: 0.2em; color: var(--cream); text-decoration: none; opacity: 0.75; transition: opacity 0.3s, color 0.3s; position: relative; }
+  .nav-links-desktop { display: none; gap: 2rem; list-style: none; }
+  .nav-links-desktop a { font-family: 'Cinzel', serif; font-size: 0.72rem; letter-spacing: 0.18em; color: var(--cream); text-decoration: none; opacity: 0.75; transition: opacity 0.3s, color 0.3s; position: relative; }
   .nav-links-desktop a::after { content: ''; position: absolute; bottom: -4px; left: 0; right: 0; height: 1px; background: var(--gold); transform: scaleX(0); transition: transform 0.3s; }
   .nav-links-desktop a:hover { opacity: 1; color: var(--gold); }
   .nav-links-desktop a:hover::after { transform: scaleX(1); }
@@ -175,7 +175,6 @@
   .product-card img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.8s ease, filter 0.5s; filter: brightness(0.85) saturate(1.1); }
   .product-card:hover img { transform: scale(1.06); filter: brightness(1) saturate(1.3); }
 
-  /* Always visible overlay on mobile */
   .product-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(26,17,8,0.9) 0%, rgba(26,17,8,0.1) 55%, transparent 100%); display: flex; flex-direction: column; justify-content: flex-end; padding: 0.9rem; }
   @media (min-width: 768px) { .product-overlay { padding: 2rem; transform: translateY(22%); transition: transform 0.5s ease; } .product-card:hover .product-overlay { transform: translateY(0); } }
 
@@ -229,6 +228,59 @@
   .workshop-date { font-size: 0.78rem; color: rgba(245,237,216,0.5); margin-bottom: 1.2rem; }
   .workshop-price { font-family: 'Cinzel', serif; font-size: 1.25rem; color: var(--gold); }
   .workshop-price span { font-size: 0.7rem; color: rgba(245,237,216,0.4); font-family: 'Lato', sans-serif; }
+
+  /* ── SERVICES CATALOGUE ── */
+  .services-section { padding: 3rem 1.5rem 4rem; max-width: 860px; margin: 0 auto; }
+  @media (min-width: 768px) { .services-section { padding: 4rem 2rem 6rem; } }
+
+  .services-tabs { display: flex; gap: 0.5rem; flex-wrap: wrap; margin: 1.8rem 0 2rem; }
+  .services-tab {
+    padding: 0.5rem 1.3rem;
+    border: 1px solid rgba(201,151,58,0.25);
+    background: none; color: rgba(245,237,216,0.5);
+    font-family: 'Cinzel', serif; font-size: 0.65rem;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    cursor: pointer; transition: all 0.3s;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .services-tab.active, .services-tab:hover { background: var(--gold); color: var(--deep); border-color: var(--gold); }
+
+  .services-panel { display: none; }
+  .services-panel.active { display: block; }
+
+  .service-item {
+    display: flex; align-items: center; gap: 1rem;
+    padding: 0.95rem 0;
+    border-bottom: 1px solid rgba(201,151,58,0.1);
+    position: relative; transition: background 0.2s;
+  }
+  .service-item:last-child { border-bottom: none; }
+  .service-item:hover { background: rgba(201,151,58,0.03); margin: 0 -0.5rem; padding-left: 0.5rem; padding-right: 0.5rem; }
+
+  .service-emoji {
+    width: 42px; height: 42px; flex-shrink: 0;
+    background: rgba(201,151,58,0.07);
+    border: 1px solid rgba(201,151,58,0.18);
+    border-radius: 6px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.25rem;
+  }
+  .service-info { flex: 1; min-width: 0; }
+  .service-name { font-family: 'Cinzel', serif; font-size: 0.8rem; color: var(--pearl); letter-spacing: 0.05em; line-height: 1.3; }
+  .service-desc { font-size: 0.7rem; color: rgba(245,237,216,0.38); margin-top: 0.15rem; font-style: italic; }
+
+  .service-price-wrap { text-align: right; flex-shrink: 0; }
+  .service-price { font-family: 'Cinzel', serif; font-size: 0.9rem; color: var(--gold); white-space: nowrap; }
+  .service-price-old { font-size: 0.68rem; color: rgba(245,237,216,0.28); text-decoration: line-through; display: block; margin-top: 0.1rem; }
+  .service-badge-sale { display: inline-block; background: var(--maroon); color: var(--pearl); font-size: 0.52rem; letter-spacing: 0.12em; padding: 0.12rem 0.4rem; text-transform: uppercase; font-family: 'Cinzel', serif; margin-top: 0.25rem; }
+
+  /* Book button on desktop hover */
+  @media (min-width: 600px) {
+    .service-book { display: none; position: absolute; right: 0.5rem; top: 50%; transform: translateY(-50%); padding: 0.4rem 0.9rem; background: var(--gold); color: var(--deep); font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none; font-weight: 600; white-space: nowrap; }
+    .service-item:hover .service-book { display: block; }
+    .service-item:hover .service-price-wrap { visibility: hidden; }
+  }
+  .service-book { display: none; }
 
   /* TESTIMONIALS */
   .testimonials-section { padding: 3rem 1.5rem 4rem; background: rgba(201,151,58,0.02); border-top: 1px solid rgba(201,151,58,0.1); }
@@ -303,6 +355,7 @@
   <ul class="nav-links-desktop">
     <li><a href="#collection">Collection</a></li>
     <li><a href="#workshops">Workshops</a></li>
+    <li><a href="#services">Services</a></li>
     <li><a href="#about">Our Story</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
@@ -314,6 +367,7 @@
 <div class="nav-drawer" id="navDrawer">
   <a href="#collection" class="drawer-link">Collection</a>
   <a href="#workshops" class="drawer-link">Workshops</a>
+  <a href="#services" class="drawer-link">Services</a>
   <a href="#about" class="drawer-link">Our Story</a>
   <a href="#contact" class="drawer-link">Contact</a>
 </div>
@@ -486,6 +540,136 @@
   </div>
 </section>
 
+<div class="divider"><div class="divider-line"></div><div class="divider-diamond"></div><div class="divider-line"></div></div>
+
+<!-- SERVICES CATALOGUE -->
+<section id="services">
+  <div class="services-section">
+    <span class="section-eyebrow reveal">— What We Offer —</span>
+    <h2 class="section-title reveal reveal-delay-1">Our <em>Services</em></h2>
+
+    <div class="services-tabs reveal reveal-delay-2">
+      <button class="services-tab active" data-tab="makeup">Makeup</button>
+      <button class="services-tab" data-tab="jewellery">Jewellery</button>
+      <button class="services-tab" data-tab="art">Art & Craft</button>
+    </div>
+
+    <!-- MAKEUP -->
+    <div class="services-panel active" id="tab-makeup">
+      <div class="service-item">
+        <div class="service-emoji">👰</div>
+        <div class="service-info"><div class="service-name">Bride Makeup</div></div>
+        <div class="service-price-wrap"><div class="service-price">₹3,500</div></div>
+        <a href="#contact" class="service-book">Book</a>
+      </div>
+      <div class="service-item">
+        <div class="service-emoji">💄</div>
+        <div class="service-info"><div class="service-name">Makeup with Jewellery</div></div>
+        <div class="service-price-wrap"><div class="service-price">₹2,500</div></div>
+        <a href="#contact" class="service-book">Book</a>
+      </div>
+      <div class="service-item">
+        <div class="service-emoji">✨</div>
+        <div class="service-info"><div class="service-name">Pigmentation Skin Makeup</div></div>
+        <div class="service-price-wrap"><div class="service-price">₹1,800</div></div>
+        <a href="#contact" class="service-book">Book</a>
+      </div>
+      <div class="service-item">
+        <div class="service-emoji">🎉</div>
+        <div class="service-info"><div class="service-name">Party Wear Look</div></div>
+        <div class="service-price-wrap"><div class="service-price">₹2,000</div></div>
+        <a href="#contact" class="service-book">Book</a>
+      </div>
+      <div class="service-item">
+        <div class="service-emoji">🤵</div>
+        <div class="service-info"><div class="service-name">Groom Makeup</div></div>
+        <div class="service-price-wrap"><div class="service-price">₹1,000</div></div>
+        <a href="#contact" class="service-book">Book</a>
+      </div>
+      <div class="service-item">
+        <div class="service-emoji">🌸</div>
+        <div class="service-info"><div class="service-name">Simple Makeup</div></div>
+        <div class="service-price-wrap"><div class="service-price">₹1,500</div></div>
+        <a href="#contact" class="service-book">Book</a>
+      </div>
+      <div class="service-item">
+        <div class="service-emoji">💅</div>
+        <div class="service-info"><div class="service-name">Nail Art</div></div>
+        <div class="service-price-wrap"><div class="service-price">₹1,500</div></div>
+        <a href="#contact" class="service-book">Book</a>
+      </div>
+      <div class="service-item">
+        <div class="service-emoji">🖐️</div>
+        <div class="service-info"><div class="service-name">Hand Casting</div><div class="service-desc">Different cost options available</div></div>
+        <div class="service-price-wrap"><div class="service-price">₹4,900</div><div class="service-price-old">₹4,999</div></div>
+        <a href="#contact" class="service-book">Book</a>
+      </div>
+    </div>
+
+    <!-- JEWELLERY -->
+    <div class="services-panel" id="tab-jewellery">
+      <div class="service-item">
+        <div class="service-emoji">📿</div>
+        <div class="service-info"><div class="service-name">Mangalsutr Making</div></div>
+        <div class="service-price-wrap"><div class="service-price">₹1,999</div></div>
+        <a href="#contact" class="service-book">Book</a>
+      </div>
+      <div class="service-item">
+        <div class="service-emoji">🌸</div>
+        <div class="service-info"><div class="service-name">Flowers Jewellery</div><div class="service-desc">Different styles available</div></div>
+        <div class="service-price-wrap"><div class="service-price">₹2,500</div></div>
+        <a href="#contact" class="service-book">Book</a>
+      </div>
+      <div class="service-item">
+        <div class="service-emoji">💐</div>
+        <div class="service-info"><div class="service-name">Flowers Jewellery (Standard)</div></div>
+        <div class="service-price-wrap"><div class="service-price">₹2,000</div></div>
+        <a href="#contact" class="service-book">Book</a>
+      </div>
+      <div class="service-item">
+        <div class="service-emoji">💐</div>
+        <div class="service-info"><div class="service-name">Flowers Jewellery (Mini)</div><div class="service-desc">Different styles available</div></div>
+        <div class="service-price-wrap"><div class="service-price">₹200</div><div class="service-price-old">₹2,000</div><span class="service-badge-sale">Offer</span></div>
+        <a href="#contact" class="service-book">Book</a>
+      </div>
+      <div class="service-item">
+        <div class="service-emoji">👂</div>
+        <div class="service-info"><div class="service-name">कानfull (Ear Jewellery)</div></div>
+        <div class="service-price-wrap"><div class="service-price">₹899</div></div>
+        <a href="#contact" class="service-book">Book</a>
+      </div>
+      <div class="service-item">
+        <div class="service-emoji">💍</div>
+        <div class="service-info"><div class="service-name">Nath Making</div></div>
+        <div class="service-price-wrap"><div class="service-price">₹599</div></div>
+        <a href="#contact" class="service-book">Book</a>
+      </div>
+      <div class="service-item">
+        <div class="service-emoji">🧵</div>
+        <div class="service-info"><div class="service-name">Fabric Frame / Fabric Jewellery</div></div>
+        <div class="service-price-wrap"><div class="service-price">₹999</div></div>
+        <a href="#contact" class="service-book">Book</a>
+      </div>
+    </div>
+
+    <!-- ART & CRAFT -->
+    <div class="services-panel" id="tab-art">
+      <div class="service-item">
+        <div class="service-emoji">🎨</div>
+        <div class="service-info"><div class="service-name">Mat Rangoli</div><div class="service-desc">Different cost options</div></div>
+        <div class="service-price-wrap"><div class="service-price">₹200</div><div class="service-price-old">₹250</div><span class="service-badge-sale">Offer</span></div>
+        <a href="#contact" class="service-book">Book</a>
+      </div>
+      <div class="service-item">
+        <div class="service-emoji">📄</div>
+        <div class="service-info"><div class="service-name">Flyer / Poster Design</div></div>
+        <div class="service-price-wrap"><div class="service-price">₹999</div></div>
+        <a href="#contact" class="service-book">Book</a>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- TESTIMONIALS -->
 <section class="testimonials-section">
   <div class="section-header">
@@ -525,6 +709,7 @@
     <ul class="footer-links">
       <li><a href="#collection">Our Collection</a></li>
       <li><a href="#workshops">Workshops</a></li>
+      <li><a href="#services">Services</a></li>
       <li><a href="#about">About Us</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
@@ -542,6 +727,16 @@
 <div class="footer-bottom">© 2025 Glowzone. All rights reserved. · श्री स्वामी समर्थ</div>
 
 <script>
+// Services tabs
+document.querySelectorAll('.services-tab').forEach(btn => {
+  btn.addEventListener('click', function() {
+    document.querySelectorAll('.services-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.services-tab').forEach(t => t.classList.remove('active'));
+    document.getElementById('tab-' + this.dataset.tab).classList.add('active');
+    this.classList.add('active');
+  });
+});
+
 // Hamburger
 const hamburger = document.getElementById('hamburger');
 const navDrawer = document.getElementById('navDrawer');
